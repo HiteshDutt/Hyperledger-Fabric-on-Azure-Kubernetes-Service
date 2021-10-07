@@ -68,7 +68,7 @@
             "mod_policy": "Admins",
             "value": {
               "capabilities": {
-                "V1_4_2": {}
+                "V2_0": {}
               }
             },
             "version": "0"

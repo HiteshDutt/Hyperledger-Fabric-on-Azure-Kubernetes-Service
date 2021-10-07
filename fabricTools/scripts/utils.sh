@@ -26,31 +26,31 @@ Capabilities:
     # supported by both.
     # Set the value of the capability to true to require it.
     Channel: &ChannelCapabilities
-        # V1.4.3 for Channel is a catchall flag for behavior which has been
+        # V2_0 for Channel is a catchall flag for behavior which has been
         # determined to be desired for all orderers and peers running at the v1.3.x
         # level, but which would be incompatible with orderers and peers from
         # prior releases.
-        # Prior to enabling V1.4.3 channel capabilities, ensure that all
+        # Prior to enabling V2_0 channel capabilities, ensure that all
         # orderers and peers on a channel are at v1.3.0 or later.
-        V1_4_3: true
+        V2_0: true
     # Orderer capabilities apply only to the orderers, and may be safely
     # used with prior release peers.
     # Set the value of the capability to true to require it.
     Orderer: &OrdererCapabilities
-        # V1.4.2 for Orderer is a catchall flag for behavior which has been
+        # V2_0 for Orderer is a catchall flag for behavior which has been
         # determined to be desired for all orderers running at the v1.1.x
         # level, but which would be incompatible with orderers from prior releases.
-        # Prior to enabling V1.4.2 orderer capabilities, ensure that all
-        # orderers on a channel are at v1.4.2 or later.
-        V1_4_2: true
+        # Prior to enabling V2_0 orderer capabilities, ensure that all
+        # orderers on a channel are at V2_0 or later.
+        V2_0: true
 
     # Application capabilities apply only to the peer network, and may be safely
     # used with prior release orderers.
     # Set the value of the capability to true to require it.
     Application: &ApplicationCapabilities
-        # V1.4.2 for Application enables the new non-backwards compatible
-        # features and fixes of fabric v1.4.2.
-        V1_4_2: true"
+        # V2_0 for Application enables the new non-backwards compatible
+        # features and fixes of fabric V2_0.
+        V2_0: true"
 }
 
 function printOrdererDefaults() {
@@ -145,6 +145,9 @@ function printOrg {
     # For organization policies, their canonical path is usually
     #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
     Policies:
+        Endorsement:
+            Type: Signature
+            Rule: \"OR('${ORG_MSP_ID}.member')\"    
         Readers:
             Type: Signature
             Rule: \"OR('${ORG_MSP_ID}.member')\"
@@ -226,6 +229,12 @@ Application: &ApplicationDefaults
     # For Application policies, their canonical path is
     #   /Channel/Application/<PolicyName>
     Policies:
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: \"MAJORITY Endorsement\"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: \"MAJORITY Endorsement\"    
         Readers:
             Type: ImplicitMeta
             Rule: \"ANY Readers\"
@@ -308,8 +317,6 @@ echo "
             <<: *OrdererCapabilities
     Application:
         <<: *ApplicationDefaults
-        Organizations:
-            - <<: *${ORG_AKS_NAME}
     Consortiums:
       SampleConsortium:
         Organizations:

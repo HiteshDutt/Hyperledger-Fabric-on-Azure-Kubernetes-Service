@@ -116,7 +116,7 @@ function deployNodes {
       mkdir /tmp/channel-artifacts
       {
       export FABRIC_CFG_PATH="/tmp"
-      configtxgen -profile SampleEtcdRaftProfile -outputBlock /tmp/channel-artifacts/genesis.block
+      configtxgen -profile SampleEtcdRaftProfile -outputBlock /tmp/channel-artifacts/genesis.block -channelID testchainid
       res=$?
       verifyResult $res "Generating genesis block failed!" "$scriptStartTime" 
   
