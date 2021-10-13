@@ -31,7 +31,7 @@ echo
 
 FABRIC_ADMIN_POD=$(kubectl -n ${adminNamespace} get pods -l name=fabric-admin -ojsonpath={.items[0].metadata.name})
 kubectl -n ${adminNamespace} exec ${FABRIC_ADMIN_POD} -- bash -c "/var/hyperledger/consortiumScripts/byn2.sh ${theargs}"
-#kubectl -n ${adminNamespace} delete pod ${FABRIC_ADMIN_POD} &> $LOG_FILE
+kubectl -n ${adminNamespace} delete pod ${FABRIC_ADMIN_POD} &> $LOG_FILE
 res=$?
 verifyResult $res "Deletion of fabric-admin pod Failed"
 echo

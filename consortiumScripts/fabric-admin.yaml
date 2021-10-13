@@ -32,7 +32,7 @@ spec:
         - name: fabric-tools-secrets
       containers:
       - name: fabric-admin
-        image: hiteshdutt/fabrictools:2
+        image: hiteshdutt/fabrictools:3
         stdin: true
         tty: true
         command: ["/bin/bash"]

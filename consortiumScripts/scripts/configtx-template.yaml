@@ -22,6 +22,20 @@ Organizations:
         ID: {ORG_NAME}
 
         MSPDir: msp
+        
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('{ORG_NAME}.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('{ORG_NAME}.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('{ORG_NAME}.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('{ORG_NAME}.member')"
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
@@ -68,7 +82,13 @@ Application: &ApplicationDefaults
             Rule: "ANY Writers"
         Admins:
             Type: ImplicitMeta
-            Rule: "ANY Admins"
+            Rule: "MAJORITY Admins"
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
 
     Capabilities:
         <<: *ApplicationCapabilities
