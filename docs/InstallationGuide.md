@@ -36,11 +36,11 @@ The following requirements need to be met:
 ## Generating the docker image and the marketplace artifacts 🛠
 ### Clone the git repo
 
-`git clone https://github.com/krypc-code/Hyperledger-Fabric-on-Azure-Kubernetes-Cluster.git`
+`git clone https://github.com/hiteshdutt/Hyperledger-Fabric-on-Azure-Kubernetes-service.git`
 
 ### Navigate to the scripts directory
 
-`cd Hyperledger-Fabric-on-Azure-Kubernetes-Cluster/scripts`
+`cd Hyperledger-Fabric-on-Azure-Kubernetes-service/scripts`
 
 
 ### Execute the generateArtifacts.sh script
@@ -63,19 +63,19 @@ The following requirements need to be met:
 
 
 ## Upload the generated artifacts 🛠
-- The artifacts are generated at `Hyperledger-Fabric-On-AKS/out`. The contents in the `out` directory should be uploaded to a location that can be accessed by the template. While uploading, the directory structure should not be changed.
+- The artifacts are generated at `Hyperledger-Fabric-on-Azure-Kubernetes-service/out`. The contents in the `out` directory should be uploaded to a location that can be accessed by the template. While uploading, the directory structure should not be changed.
 
 For example, if we are uploading the artifacts to the Azure Blob using Azure CLI, the following commands can be used.
 
 - First,create storage account, get account keys and create a container named `mktplace` inside it.
 ```
-az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-Cluster/out/hlf-marketplace.zip --name hlf-marketplace.zip --account-key $ACCOUNT_KEY
+az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-service/out/hlf-marketplace.zip --name hlf-marketplace.zip --account-key $ACCOUNT_KEY
 
-az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-Cluster/out/artifacts/funcNodeJS.zip --name artifacts/funcNodeJS.zip --account-key $ACCOUNT_KEY
+az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-service/out/artifacts/funcNodeJS.zip --name artifacts/funcNodeJS.zip --account-key $ACCOUNT_KEY
 
-az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-Cluster/out/nestedtemplates/publicIpTemplate.json --name nestedtemplates/publicIpTemplate.json --account-key $ACCOUNT_KEY
+az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-service/out/nestedtemplates/publicIpTemplate.json --name nestedtemplates/publicIpTemplate.json --account-key $ACCOUNT_KEY
 
-az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-Cluster/out/mainTemplate.json --name mainTemplate.json --account-key $ACCOUNT_KEY
+az storage blob upload --account-name <storageAccountName> --container-name mktplace --file <rootDir>/Hyperledger-Fabric-on-Azure-Kubernetes-service/out/mainTemplate.json --name mainTemplate.json --account-key $ACCOUNT_KEY
 
 ```
 
