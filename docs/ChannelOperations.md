@@ -3,14 +3,14 @@
 
 ![channels.png](../images/channels.png)
 
-- Use the following command to pull binaries of HLF 2.2
+- Use the following command to pull binaries of HLF 2.3
 
 - Using the fabric binaries OrgName is collected to replace peerOrgName in configtx. Once this step completes configtxgen is used to to create channel context.
 - Peers join the network using join channel.
 ```
 cd setupFabricCli
   
-curl https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash -s -- 2.2.0 -d -s
+curl https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash -s -- 2.3 -d -s
 
 cat tempConfigtx.yaml | sed -e "s/OrgName/<peerOrgName>/g" > configtx.yaml
   

@@ -11,14 +11,11 @@ The following requirements need to be met:
 * Storage Account created and with a container
 
 ## Manual deployment
-
-
 ![AzureBase.png](../images/AzureBase.png)
 
+- Hyperledger Fabric 2.x network which is made up of a Peer Cluster and an Orderer Cluster that gets deployed separately and gets connected post deployment facilitated with IaaS model using Microsoft ARM template.
 
-- Hyperledger Fabric 2.2 network which is made up of a Peer Cluster and an Orderer Cluster that gets deployed separately and gets connected post deployment facilitated with IaaS model using Microsoft ARM template.
-
-- This application is based on Azure Blockchain as a Service using ARM code which is available as opensource for HL 1.4 on Github.
+- This application is based on Krypc's BaaS using ARM code which is available as opensource for HL 2.2 on [Github](https://github.com/krypc-code/Hyperledger-Fabric-on-Azure-Kubernetes-Cluster).
 
 
 ## Services and Deployments 🛠
@@ -27,7 +24,6 @@ The following requirements need to be met:
     Peer Node in a Peer Organisation
     Orderer Node in an Orderer Organisation
     CA Node per Organisation
-    Fabric Go Cli 
     Log Analytics on Azure
     Container Insights on Azure
     Storage Account for Azure
@@ -79,6 +75,6 @@ az storage blob upload --account-name <storageAccountName> --container-name mktp
 
 ```
 
-## Create Connection Profiles
-  - Continue the deployment by creating connection profiles.
- - [Profiles](CreatingProfiles.md)
+## Infrastrucutre Deployment
+  - Continue the deployment.
+ - [Profiles](InfrastructureDeployment.md)
